@@ -1,19 +1,55 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import React, { useContext } from "react";
+import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import { ThemeContext, ThemeProvider } from "./ThemeContext";
 
-export default function Counter() {
-  const [count, setCount] = useState(0);
+function Home() {
+  return <h1>Home Page</h1>;
+}
+
+function About() {
+  return <h1>About Page</h1>;
+}
+
+function Contact() {
+  return <h1>Contact Page</h1>;
+}
+
+function NotFound() {
+  return <h1>404 - Page Not Found</h1>;
+}
+
+function ThemeSwitcher() {
+  const { theme, setTheme } = useContext(ThemeContext);
 
   return (
-    <div className="flex flex-col items-center gap-4 p-6 border rounded-lg shadow-lg w-64">
-      <h1 className="text-2xl font-bold">Counter: {count}</h1>
-      <div className="flex gap-4">
-        <Button onClick={() => setCount(count - 1)} variant="destructive">
-          -
-        </Button>
-        <Button onClick={() => setCount(count + 1)}>+</Button>
-      </div>
+    <div>
+      <p>Current Theme: {theme}</p>
+      <button onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
+        Toggle Theme
+      </button>
     </div>
   );
 }
-// this is new code//
+
+function App() {
+  return (
+    <ThemeProvider>
+      <Router>
+        <nav>
+          <Link to="/">Home</Link> |<Link to="/about">About</Link> |
+          <Link to="/contact">Contact</Link> |
+          <ThemeSwitcher />
+        </nav>
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Router>
+    </ThemeProvider>
+  );
+}
+
+export default App;
