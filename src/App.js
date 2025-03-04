@@ -1,11 +1,12 @@
+// App.js
 import React from "react";
-import AuthForm from "./auth"; // Import the AuthForm component
+import TodoApp from "./TodoApp";
 
 const App = () => {
   return (
-    <div>
-      <h1>Authentication System</h1>
-      <AuthForm />
+    <div className="app-container">
+      <h1>Todo List Application</h1>
+      <TodoApp />
     </div>
   );
 };
