@@ -1,61 +1,88 @@
-/* App.css1*/
+/* Global styles */
 body {
-  margin: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(to right, #101820, #ff00bb);
-  height: 100vh;
+  margin: 0;
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+/* Login Page */
+.login-container {
   text-align: center;
 }
 
-.page-container {
+.login-box {
   background: white;
-  padding: 40px;
+  padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  width: 75%; /* 3/4 of the screen */
-  height: 75vh; /* Adjust height to match */
+  width: 300px;
+}
+
+input {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.guest-option {
+  color: blue;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* Catalogue Page */
+.catalogue-container {
+  text-align: center;
+}
+
+.product-grid {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-}
-
-nav ul {
-  list-style: none;
-  padding: 0;
-}
-
-nav ul li {
-  display: inline;
-  margin: 0 15px;
-}
-
-nav ul li a {
-  text-decoration: none;
-  font-size: 18px;
-  color: #0056b3;
-  font-weight: bold;
-}
-
-nav ul li a:hover {
-  text-decoration: underline;
-}
-
-/* Content sections */
-.content-section {
+  gap: 20px;
+  flex-wrap: wrap;
   margin-top: 20px;
 }
 
-.content-section h2 {
-  color: #333;
-  font-size: 22px;
-  margin-top: 15px;
+.product-card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 200px;
 }
 
-.content-section p {
+.product-card img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.product-card h3 {
   font-size: 16px;
-  color: #555;
+  margin: 10px 0;
+}
+
+.product-card button {
+  width: 100%;
+  margin-top: 10px;
 }
