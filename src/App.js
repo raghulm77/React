@@ -1,14 +1,15 @@
-// App.js
-import React from "react";
-import TodoApp from "./TodoApp";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import "./Studies.css";
+import Login from "./Login2";
+import Catalogue from "./Catalogue";
 
-const App = () => {
+export default function App() {
   return (
-    <div className="app-container">
-      <h1>Todo List Application</h1>
-      <TodoApp />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/catalogue" element={<Catalogue />} />
+      </Routes>
+    </Router>
   );
-};
-
-export default App;
+}
