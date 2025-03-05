@@ -1,0 +1,61 @@
+/* App.css */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #101820, #ff00bb);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.page-container {
+  background: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 75%; /* 3/4 of the screen */
+  height: 75vh; /* Adjust height to match */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 15px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  font-size: 18px;
+  color: #0056b3;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Content sections */
+.content-section {
+  margin-top: 20px;
+}
+
+.content-section h2 {
+  color: #333;
+  font-size: 22px;
+  margin-top: 15px;
+}
+
+.content-section p {
+  font-size: 16px;
+  color: #555;
+}
