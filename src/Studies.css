@@ -45,17 +45,27 @@ button:hover {
   background-color: #0056b3;
 }
 
-.guest-option {
-  color: blue;
+/* Logout Button */
+.logout-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 5px 10px;
+  font-size: 12px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
-  margin-top: 10px;
+  width: auto;
+  height: auto;
 }
 
-/* Catalogue Page */
-.catalogue-container {
-  text-align: center;
+.logout-button:hover {
+  background-color: darkred;
 }
 
+/* Product Grid */
 .product-grid {
   display: flex;
   justify-content: center;
@@ -64,25 +74,33 @@ button:hover {
   margin-top: 20px;
 }
 
+/* Product Card */
 .product-card {
   background: white;
   padding: 15px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  width: 200px;
+  width: 220px;
+  text-align: center;
+}
+.cart-container,
+.payment-container {
+  text-align: center;
+  padding: 20px;
 }
 
-.product-card img {
-  width: 100%;
-  border-radius: 5px;
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 10px;
 }
 
-.product-card h3 {
-  font-size: 16px;
-  margin: 10px 0;
-}
-
-.product-card button {
-  width: 100%;
-  margin-top: 10px;
+.payment-box {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  margin: auto;
 }
