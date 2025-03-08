@@ -12,7 +12,7 @@ const Home = () => {
   const [showContact, setShowContact] = useState(false);
 
   return (
-    <div className="container">
+    <div className={`container ${theme}`}>
       <h1>Welcome to the {theme} theme!</h1>
       <button className="toggle-btn" onClick={toggleTheme}>
         Toggle Theme
