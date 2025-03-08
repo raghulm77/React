@@ -1,35 +1,51 @@
-import React, { useState, useCallback } from "react";
-import FlowerCard from "./FlowerCard";
-import "./App.css";
+import React, { Suspense, useState } from "react";
+import { ThemeProvider, useTheme } from "./ThemeContext";
+import "./styles.css";
 
-const flowers = [
-  { name: "Rose", description: "A symbol of love and romance.", image: "https://via.placeholder.com/150/FF0000/FFFFFF?text=Rose" },
-  { name: "Lily", description: "Represents purity and refined beauty.", image: "https://via.placeholder.com/150/FFFFFF/000000?text=Lily" },
-  { name: "Tulip", description: "A symbol of deep love and comfort.", image: "https://via.placeholder.com/150/FFC0CB/000000?text=Tulip" },
-  { name: "Sunflower", description: "Signifies happiness and positivity.", image: "https://via.placeholder.com/150/FFD700/000000?text=Sunflower" },
-  { name: "Orchid", description: "Represents luxury and strength.", image: "https://via.placeholder.com/150/800080/FFFFFF?text=Orchid" }
-];
+// Lazy load the components
+const About = React.lazy(() => import("./About"));
+const Contact = React.lazy(() => import("./Contact"));
 
-const App = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const nextFlower = useCallback(() => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % flowers.length);
-  }, []);
-
-  const prevFlower = useCallback(() => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + flowers.length) % flowers.length);
-  }, []);
+const Home = () => {
+  const { theme, toggleTheme } = useTheme();
+  const [showAbout, setShowAbout] = useState(false);
+  const [showContact, setShowContact] = useState(false);
 
   return (
     <div className="container">
-      <h1>Flower Viewer</h1>
-      <FlowerCard flower={flowers[currentIndex]} />
-      <div className="button-container">
-        <button onClick={prevFlower}>Previous</button>
-        <button onClick={nextFlower}>Next</button>
-      </div>
+      <h1>Welcome to the {theme} theme!</h1>
+      <button className="toggle-btn" onClick={toggleTheme}>
+        Toggle Theme
+      </button>
+      <button className="show-btn" onClick={() => setShowAbout(!showAbout)}>
+        Show About
+      </button>
+      <button className="show-btn" onClick={() => setShowContact(!showContact)}>
+        Show Contact
+      </button>
+
+      {showAbout && (
+        <Suspense fallback={<div className="loading">Loading About...</div>}>
+          <About />
+        </Suspense>
+      )}
+
+      {showContact && (
+        <Suspense fallback={<div className="loading">Loading Contact...</div>}>
+          <Contact />
+        </Suspense>
+      )}
     </div>
+  );
+};
+
+const App = () => {
+  return (
+    <ThemeProvider>
+      <Suspense fallback={<div className="loading">Loading App...</div>}>
+        <Home />
+      </Suspense>
+    </ThemeProvider>
   );
 };
 
