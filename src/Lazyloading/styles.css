@@ -1,0 +1,50 @@
+body {
+    font-family: Arial, sans-serif;
+    transition: background 0.3s, color 0.3s;
+  }
+  
+  .light {
+    background: #ffffff;
+    color: #000000;
+  }
+  
+  .dark {
+    background: #181818;
+    color: #ffffff;
+  }
+  
+  .container {
+    text-align: center;
+    padding: 50px;
+  }
+  
+  .section {
+    margin: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+  }
+  
+  button {
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .toggle-btn {
+    background: yellow;
+    color: black;
+  }
+  
+  .show-btn {
+    background: orange;
+    color: white;
+  }
+  
+  .loading {
+    font-size: 18px;
+    margin-top: 20px;
+  }
+  

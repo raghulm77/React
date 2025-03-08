@@ -1,50 +1,112 @@
-body {
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: Arial, sans-serif;
-    transition: background 0.3s, color 0.3s;
   }
   
-  .light {
-    background: #ffffff;
-    color: #000000;
-  }
-  
-  .dark {
-    background: #181818;
-    color: #ffffff;
-  }
-  
-  .container {
-    text-align: center;
-    padding: 50px;
-  }
-  
-  .section {
-    margin: 20px;
+  /* Light and Dark Mode */
+  .app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease, color 0.3s ease;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  .app.light {
+    background: #f0f0f0;
+    color: #333;
+  }
+  
+  .app.dark {
+    background: #222;
+    color: #fff;
+  }
+  
+  /* Navigation Bar */
+  nav {
+    display: flex;
+    gap: 20px;
+    padding: 15px;
+    background: #007bff;
+    width: 100%;
+    justify-content: center;
     border-radius: 10px;
   }
   
+  nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+  }
+  
+  nav a:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+  
+  /* Theme Toggle Button */
   button {
-    padding: 10px 15px;
-    margin: 5px;
+    padding: 8px 16px;
     border: none;
     cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .toggle-btn {
-    background: yellow;
-    color: black;
-  }
-  
-  .show-btn {
-    background: orange;
+    background: #ff5733;
     color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background 0.3s ease;
   }
   
-  .loading {
-    font-size: 18px;
+  button:hover {
+    background: #c44124;
+  }
+  
+  /* Page Content */
+  .page {
+    max-width: 800px;
+    text-align: center;
     margin-top: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+  }
+  
+  .page h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+  }
+  
+  .page ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .page ul li {
+    margin: 10px 0;
+  }
+  
+  /* Contact Page */
+  .page a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .page a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    nav {
+      flex-direction: column;
+      align-items: center;
+    }
   }
   

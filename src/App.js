@@ -1,52 +1,37 @@
-import React, { Suspense, useState } from "react";
-import { ThemeProvider, useTheme } from "./ThemeContext";
+import { useState } from "react";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import "./styles.css";
+import Home from "./Home";
+import About from "./About";
+import Contact from "./Contact";
 
-// Lazy load the components
-const About = React.lazy(() => import("./About"));
-const Contact = React.lazy(() => import("./Contact"));
-
-const Home = () => {
-  const { theme, toggleTheme } = useTheme();
-  const [showAbout, setShowAbout] = useState(false);
-  const [showContact, setShowContact] = useState(false);
+export default function App() {
+  const [darkMode, setDarkMode] = useState(false);
+  const [activePage, setActivePage] = useState("home");
 
   return (
-    <div className={`container ${theme}`}>
-      <h1>Welcome to the {theme} theme!</h1>
-      <button className="toggle-btn" onClick={toggleTheme}>
-        Toggle Theme
-      </button>
-      <button className="show-btn" onClick={() => setShowAbout(!showAbout)}>
-        Show About
-      </button>
-      <button className="show-btn" onClick={() => setShowContact(!showContact)}>
-        Show Contact
-      </button>
-
-      {showAbout && (
-        <Suspense fallback={<div className="loading">Loading About...</div>}>
-          <About />
-        </Suspense>
-      )}
-
-      {showContact && (
-        <Suspense fallback={<div className="loading">Loading Contact...</div>}>
-          <Contact />
-        </Suspense>
-      )}
-    </div>
+    <Router>
+      <div className={darkMode ? "app dark" : "app light"}>
+        <nav>
+          <Link to="#" onClick={() => setActivePage("home")}>
+            Home
+          </Link>
+          <Link to="#" onClick={() => setActivePage("about")}>
+            About
+          </Link>
+          <Link to="#" onClick={() => setActivePage("contact")}>
+            Contact
+          </Link>
+          <button onClick={() => setDarkMode(!darkMode)}>
+            {darkMode ? "Light Mode" : "Dark Mode"}
+          </button>
+        </nav>
+        <div className="content">
+          {activePage === "home" && <Home />}
+          {activePage === "about" && <About />}
+          {activePage === "contact" && <Contact />}
+        </div>
+      </div>
+    </Router>
   );
-};
-
-const App = () => {
-  return (
-    <ThemeProvider>
-      <Suspense fallback={<div className="loading">Loading App...</div>}>
-        <Home />
-      </Suspense>
-    </ThemeProvider>
-  );
-};
-
-export default App;
+}
