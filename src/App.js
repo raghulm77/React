@@ -1,37 +1,37 @@
-import { useState } from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
-import "./styles.css";
-import Home from "./Home";
-import About from "./About";
-import Contact from "./Contact";
+// src/App.js
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "./Login";
+import SignupForm from "./SignUpForm";
+import RetailPage from "./RetailPage";
 
-export default function App() {
-  const [darkMode, setDarkMode] = useState(false);
-  const [activePage, setActivePage] = useState("home");
+const App = () => {
+  const [isAuthenticated, setAuth] = useState(
+    localStorage.getItem("isAuthenticated") === "true"
+  );
+
+  useEffect(() => {
+    localStorage.setItem("isAuthenticated", isAuthenticated);
+  }, [isAuthenticated]);
 
   return (
     <Router>
-      <div className={darkMode ? "app dark" : "app light"}>
-        <nav>
-          <Link to="#" onClick={() => setActivePage("home")}>
-            Home
-          </Link>
-          <Link to="#" onClick={() => setActivePage("about")}>
-            About
-          </Link>
-          <Link to="#" onClick={() => setActivePage("contact")}>
-            Contact
-          </Link>
-          <button onClick={() => setDarkMode(!darkMode)}>
-            {darkMode ? "Light Mode" : "Dark Mode"}
-          </button>
-        </nav>
-        <div className="content">
-          {activePage === "home" && <Home />}
-          {activePage === "about" && <About />}
-          {activePage === "contact" && <Contact />}
-        </div>
-      </div>
+      <Routes>
+        <Route path="/" element={<Login setAuth={setAuth} />} />
+        <Route path="/signup" element={<SignupForm />} />
+        <Route
+          path="/retail"
+          element={
+            isAuthenticated ? (
+              <RetailPage setAuth={setAuth} />
+            ) : (
+              <Login setAuth={setAuth} />
+            )
+          }
+        />
+      </Routes>
     </Router>
   );
-}
+};
+
+export default App;
