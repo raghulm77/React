@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./Login";
-import SignupForm from "./SignUpForm";
-import RetailPage from "./RetailPage";
+import SignupForm from "../SignUpForm";
+import RetailPage from "../RetailPage";
 
 const App = () => {
   const [isAuthenticated, setAuth] = useState(
